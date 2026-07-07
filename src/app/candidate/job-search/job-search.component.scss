@@ -1,0 +1,17 @@
+.filter-card { padding: 16px; margin-bottom: 24px; }
+.filter-form {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.filter-form mat-form-field { flex: 1; min-width: 180px; }
+.job-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.job-card { display: flex; flex-direction: column; justify-content: space-between; }
+.job-desc { color: #555; min-height: 60px; }
+.meta-row { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.85rem; color: #777; }
+.loading-text, .no-results { text-align: center; padding: 32px; color: #888; }
