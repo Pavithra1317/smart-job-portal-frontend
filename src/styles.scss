@@ -1,0 +1,24 @@
+/* Global styles */
+html, body { height: 100%; margin: 0; }
+body { font-family: Roboto, "Helvetica Neue", sans-serif; background: #f5f6fa; }
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.full-width { width: 100%; }
+
+.mat-mdc-card { margin-bottom: 16px; }
+
+.status-chip {
+  &.APPLIED { background: #e3f2fd !important; color: #1565c0 !important; }
+  &.UNDER_REVIEW { background: #fff8e1 !important; color: #f9a825 !important; }
+  &.SELECTED { background: #e8f5e9 !important; color: #2e7d32 !important; }
+  &.REJECTED { background: #ffebee !important; color: #c62828 !important; }
+}
+
+@media (max-width: 600px) {
+  .page-container { padding: 16px 8px; }
+}
