@@ -1,0 +1,47 @@
+<div class="page-container">
+  <a routerLink="/recruiter/jobs" class="back-link">&larr; Back to my jobs</a>
+  <h1>Applicants</h1>
+
+  <div *ngIf="loading" class="loading-text">Loading...</div>
+
+  <table mat-table [dataSource]="applicants" class="full-width" *ngIf="!loading">
+    <ng-container matColumnDef="candidateName">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let app">{{ app.candidateName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="candidateEmail">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let app">{{ app.candidateEmail }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="candidateSkills">
+      <th mat-header-cell *matHeaderCellDef>Skills</th>
+      <td mat-cell *matCellDef="let app">{{ app.candidateSkills || '—' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="resumeFileName">
+      <th mat-header-cell *matHeaderCellDef>Resume</th>
+      <td mat-cell *matCellDef="let app">{{ app.resumeFileName || '—' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let app">
+        <mat-select [value]="app.status" (selectionChange)="onStatusChange(app, $event.value)">
+          <mat-option *ngFor="let s of statusOptions" [value]="s">{{ s.replace('_',' ') }}</mat-option>
+        </mat-select>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="appliedAt">
+      <th mat-header-cell *matHeaderCellDef>Applied On</th>
+      <td mat-cell *matCellDef="let app">{{ app.appliedAt | date:'mediumDate' }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <p *ngIf="!loading && applicants.length === 0" class="no-results">No applicants yet for this job.</p>
+</div>
