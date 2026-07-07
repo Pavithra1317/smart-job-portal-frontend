@@ -1,0 +1,30 @@
+<div class="page-container">
+  <h1>Welcome, {{ auth.currentUser()?.fullName }} 👋</h1>
+  <p class="subtitle">Manage your profile, search jobs, and track your applications.</p>
+
+  <div class="card-grid">
+    <a routerLink="/candidate/profile" class="link-card">
+      <mat-card>
+        <mat-icon>person</mat-icon>
+        <h3>My Profile</h3>
+        <p>Update your details and upload your resume</p>
+      </mat-card>
+    </a>
+
+    <a routerLink="/jobs" class="link-card">
+      <mat-card>
+        <mat-icon>search</mat-icon>
+        <h3>Search Jobs</h3>
+        <p>Find jobs by keyword, location, and skills</p>
+      </mat-card>
+    </a>
+
+    <a routerLink="/candidate/applications" class="link-card">
+      <mat-card>
+        <mat-icon>assignment_turned_in</mat-icon>
+        <h3>My Applications</h3>
+        <p>Track the status of jobs you've applied to</p>
+      </mat-card>
+    </a>
+  </div>
+</div>
