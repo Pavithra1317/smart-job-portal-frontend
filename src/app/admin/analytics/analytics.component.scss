@@ -1,0 +1,11 @@
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.stat-card { text-align: center; padding: 24px 8px; }
+.stat-value { display: block; font-size: 2rem; font-weight: 700; color: #3f51b5; }
+.stat-label { color: #666; font-size: 0.85rem; }
+.status-breakdown { padding: 16px; }
+.status-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; }

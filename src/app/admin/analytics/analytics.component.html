@@ -1,0 +1,38 @@
+<div class="page-container" *ngIf="data">
+  <h1>Platform Analytics</h1>
+
+  <div class="stat-grid">
+    <mat-card class="stat-card">
+      <span class="stat-value">{{ data.totalUsers }}</span>
+      <span class="stat-label">Total Users</span>
+    </mat-card>
+    <mat-card class="stat-card">
+      <span class="stat-value">{{ data.totalCandidates }}</span>
+      <span class="stat-label">Candidates</span>
+    </mat-card>
+    <mat-card class="stat-card">
+      <span class="stat-value">{{ data.totalRecruiters }}</span>
+      <span class="stat-label">Recruiters</span>
+    </mat-card>
+    <mat-card class="stat-card">
+      <span class="stat-value">{{ data.totalJobs }}</span>
+      <span class="stat-label">Total Jobs</span>
+    </mat-card>
+    <mat-card class="stat-card">
+      <span class="stat-value">{{ data.activeJobs }}</span>
+      <span class="stat-label">Active Jobs</span>
+    </mat-card>
+    <mat-card class="stat-card">
+      <span class="stat-value">{{ data.totalApplications }}</span>
+      <span class="stat-label">Total Applications</span>
+    </mat-card>
+  </div>
+
+  <mat-card class="status-breakdown">
+    <h3>Applications by Status</h3>
+    <div class="status-row" *ngFor="let item of data.applicationsByStatus | keyvalue">
+      <span class="status-name">{{ item.key.replace('_',' ') }}</span>
+      <span class="status-count">{{ item.value }}</span>
+    </div>
+  </mat-card>
+</div>
