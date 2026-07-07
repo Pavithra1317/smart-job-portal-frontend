@@ -1,0 +1,65 @@
+<div class="page-container">
+  <h1>My Profile</h1>
+
+  <mat-card class="resume-card">
+    <h3>Resume</h3>
+    <p *ngIf="profile?.resumeFileName">Current resume: <strong>{{ profile?.resumeFileName }}</strong></p>
+    <p *ngIf="!profile?.resumeFileName" class="muted">No resume uploaded yet.</p>
+    <input type="file" accept=".pdf,.doc,.docx" (change)="onFileSelected($event)">
+    <button mat-raised-button color="primary" [disabled]="!selectedFile || uploading" (click)="uploadResume()">
+      <mat-icon>upload_file</mat-icon> Upload Resume
+    </button>
+  </mat-card>
+
+  <mat-card>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Headline</mat-label>
+        <input matInput formControlName="headline" placeholder="e.g. Full Stack Java Developer">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Summary</mat-label>
+        <textarea matInput rows="4" formControlName="summary"></textarea>
+      </mat-form-field>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Location</mat-label>
+          <input matInput formControlName="location">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>Experience (years)</mat-label>
+          <input matInput type="number" formControlName="experienceYears">
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Skills (comma-separated)</mat-label>
+        <input matInput formControlName="skills" placeholder="Java, Spring Boot, Angular">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Education</mat-label>
+        <input matInput formControlName="education">
+      </mat-form-field>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>LinkedIn URL</mat-label>
+          <input matInput formControlName="linkedInUrl">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="half-width">
+          <mat-label>GitHub URL</mat-label>
+          <input matInput formControlName="githubUrl">
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="saving">
+        Save Profile
+      </button>
+    </form>
+  </mat-card>
+</div>
