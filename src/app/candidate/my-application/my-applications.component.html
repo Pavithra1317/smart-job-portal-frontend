@@ -1,0 +1,45 @@
+<div class="page-container">
+  <h1>My Applications</h1>
+
+  <div *ngIf="loading" class="loading-text">Loading...</div>
+
+  <table mat-table [dataSource]="applications" class="full-width" *ngIf="!loading">
+    <ng-container matColumnDef="jobTitle">
+      <th mat-header-cell *matHeaderCellDef>Job Title</th>
+      <td mat-cell *matCellDef="let app">{{ app.jobTitle }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="company">
+      <th mat-header-cell *matHeaderCellDef>Company</th>
+      <td mat-cell *matCellDef="let app">{{ app.company }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let app">
+        <span class="status-chip" [ngClass]="app.status">{{ app.status.replace('_',' ') }}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="appliedAt">
+      <th mat-header-cell *matHeaderCellDef>Applied On</th>
+      <td mat-cell *matCellDef="let app">{{ app.appliedAt | date:'mediumDate' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let app">
+        <button mat-button color="warn" *ngIf="app.status === 'APPLIED'" (click)="withdraw(app)">
+          Withdraw
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <p *ngIf="!loading && applications.length === 0" class="no-results">
+    You haven't applied to any jobs yet.
+  </p>
+</div>
