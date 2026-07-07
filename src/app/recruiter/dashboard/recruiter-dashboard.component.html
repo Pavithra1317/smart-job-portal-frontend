@@ -1,0 +1,22 @@
+<div class="page-container">
+  <h1>Welcome, {{ auth.currentUser()?.fullName }} 👋</h1>
+  <p class="subtitle">Post new jobs, manage your listings, and review applicants.</p>
+
+  <div class="card-grid">
+    <a routerLink="/recruiter/post-job" class="link-card">
+      <mat-card>
+        <mat-icon>post_add</mat-icon>
+        <h3>Post a Job</h3>
+        <p>Create a new job posting</p>
+      </mat-card>
+    </a>
+
+    <a routerLink="/recruiter/jobs" class="link-card">
+      <mat-card>
+        <mat-icon>work</mat-icon>
+        <h3>My Job Postings</h3>
+        <p>Edit, deactivate, or delete your listings</p>
+      </mat-card>
+    </a>
+  </div>
+</div>
