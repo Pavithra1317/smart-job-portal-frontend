@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+  <a routerLink="/" class="brand">
+    <mat-icon>work</mat-icon>
+    <span>Smart Job Portal</span>
+  </a>
+
+  <span class="spacer"></span>
+
+  <ng-container *ngIf="!auth.isLoggedIn(); else loggedInMenu">
+    <a mat-button routerLink="/jobs">Browse Jobs</a>
+    <a mat-button routerLink="/login">Login</a>
+    <a mat-raised-button color="accent" routerLink="/register">Sign Up</a>
+  </ng-container>
+
+  <ng-template #loggedInMenu>
+    <a mat-button routerLink="/jobs">Browse Jobs</a>
+    <a mat-button [routerLink]="dashboardLink()">Dashboard</a>
+    <button mat-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+      {{ auth.currentUser()?.fullName }}
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <div class="menu-role">{{ auth.userRole() }}</div>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
+  </ng-template>
+</mat-toolbar>
